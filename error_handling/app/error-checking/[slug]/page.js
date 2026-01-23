@@ -11,7 +11,7 @@ const page = async ({ params }) => {
   }
   return (
     <div>
-      <h1>HEllo Yar, you entered in URL: {slug}</h1>
+      <h1>Hello Yar, you entered in URL: {slug}</h1>
     </div>
   );
 };
