@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
@@ -8,12 +7,9 @@ export default function Home() {
         <h1>Next.js Custom JWT + MongoDB</h1>
         <p>
           {" "}
-          <Link href={"/signup"} />
-          Signup |
-          <Link href={"/login"} />
-          Login |
-          <Link href={"/dashboard"} />
-          Dashboard |
+          <Link href={"/signup"}>Signup | </Link>
+          <Link href={"/login"}>Login | </Link>
+          <Link href={"/dashboard"}>Dashboard | </Link>
         </p>
       </main>
     </div>
