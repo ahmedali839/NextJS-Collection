@@ -54,7 +54,7 @@
 //     },
 //   });
 // }
- // ahmed dfdfdf
+// ahmed-df
 
 import { NextResponse } from "next/server";
 import dbConnect from "@/app/lib/db";
@@ -107,5 +107,5 @@ export async function POST(req) {
   return NextResponse.json({
     ok: true,
     note: { id: String(created._id), title: created.title, body: created.body },
-  });
+  }); 
 }

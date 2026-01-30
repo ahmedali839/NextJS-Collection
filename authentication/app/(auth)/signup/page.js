@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { POST } from "@/app/api/notes/route";
+// import { POST } from "@/app/api/notes/route";
 
 export default function SignupPage() {
   const router = useRouter();
