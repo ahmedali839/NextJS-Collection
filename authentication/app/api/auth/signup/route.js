@@ -17,12 +17,19 @@ export async function POST(req) {
 
   await dbConnect();
 
+  const isAlreadyExists = await User.findOne({ email }).lean();
+  if (isAlreadyExists)
+    return NextResponse.json(
+      { error: "Email Already Exists." },
+      { status: 409 },
+    );
+
   const passwordHash = await bcrypt.hash(password, 10); // OWASP: min 10 work factor. [web:35]
 
   const user = await User.create({ name, email, passwordHash });
 
   // (Session Managment - Stateless JWT)
-  const token = signToken({ sub: String(user._id) });
+  const token = await signToken({ sub: String(user._id) });
   const res = NextResponse.json({
     ok: true,
     user: { id: String(user._id), name, email },

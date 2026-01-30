@@ -5,7 +5,8 @@ import User from "../models/User";
 import { verifyToken } from "./jwt";
 
 export const getCurrentUser = cache(async () => {
-  const token = cookies.get("token")?.value;
+  const cookieStore = await cookies();
+  const token = cookieStore.get("token")?.value;
   if (!token) return null;
 
   let payload;
