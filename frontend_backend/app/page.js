@@ -1,4 +1,4 @@
-import Data from "/api/fetch";
+import {Data} from "/api/fetch";
 
 export default async function Home() {
   const data = await Data();
