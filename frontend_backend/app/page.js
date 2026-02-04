@@ -31,7 +31,7 @@ export default async function Home() {
             <p className="text-gray-500">Email: {data.email}</p>
           </div>
         ) : (
-          <p className="text-red-500">No user data found.</p>
+          <p className="text-red-500">No user data found.</p> // df
         )}
       </main>
     </div>
