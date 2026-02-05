@@ -5,7 +5,7 @@ export async function GET() {
     const response = await fetch(
       "https://jsonplaceholder.typicode.com/users/2",
     );
-// backend in next.js
+    // core backend in next.js for frontend
     if (!response.ok) {
       return NextResponse.json({ message: "Failed to fetch" }, { status: 500 });
     }
