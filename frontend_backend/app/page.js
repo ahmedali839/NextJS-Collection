@@ -1,29 +1,27 @@
-// import { Data } from "./lib/getFetchData";
+// import { getFetchData } from "@/app/lib/getFetchData";
 
-// export default async function Home() {
-//   const data = await Data();
+export async function getData() {
+  const response = await fetch(`http://localhost:3000/api/fetch`);
+  console.log(response);
 
-//   return (
-//     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-//       <h1>Hello, Yar! </h1> <br /> {data.name}
-//     </div>
-//   );
-// }
+  if (!response.ok) {
+    throw new Error("Faileded to fetch data");
+  }
 
+  const data = await response.json();
 
-// File: app/page.js
-import { getFetchData } from "@/app/lib/getFetchData"; 
-// Note: "@/app" is an alias that points to your root app folder
+  return data.data;
+}
+
 
 export default async function Home() {
-  // Call the function directly (Server Component capability)
-  const data = await getFetchData();
+  const data = await getData();
 
   return (
     <div className="flex min-h-screen items-center justify-center">
       <main className="text-center">
         <h1 className="text-2xl font-bold mb-4">Hello, Yar!</h1>
-        
+
         {/* Check if we actually have data to display */}
         {data && data.name ? (
           <div className="p-4 border rounded shadow-md">
