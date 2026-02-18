@@ -17,7 +17,7 @@ export default function Home() {
       </p>
       <p className="m-5">
         {" "}
-        <b>/dashboard: Explains Data fetch </b> fetching current time from
+        <b>/dashboard: Explains Data fetch </b> Fetching current time from
         server but it cached for 10s, after cached time it'll get current data
         from server
       </p>
