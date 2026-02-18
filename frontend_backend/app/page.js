@@ -1,8 +1,7 @@
-// import { getFetchData } from "@/app/lib/getFetchData";
+import { getFetchData2 } from "@/app/lib/getFetchData";
 
 export async function getData() {
   const response = await fetch(`http://localhost:3000/api/fetch`);
-  console.log(response);
 
   if (!response.ok) {
     throw new Error("Faileded to fetch data");
@@ -12,7 +11,13 @@ export async function getData() {
 
   return data.data;
 }
+export async function getData2() {
+  const response = await getFetchData2();
+  console.log("bhai tyra response: ", response);
+}
 
+const d = await getData2();
+console.log(d);
 
 export default async function Home() {
   const data = await getData();
