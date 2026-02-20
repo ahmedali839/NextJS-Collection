@@ -24,7 +24,7 @@ export default function Home() {
       <p className="m-5">
         {" "}
         <b>/products: Explains route-component cache</b> Navigating to back page
-        'already rendered' more smoothness, user feel like not-navigated, but it
+        "already rendered" more smoothness, user feel like not-navigated, but it
         is navigated but fast and smooth
       </p>
     </div>
