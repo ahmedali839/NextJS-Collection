@@ -1,4 +1,3 @@
-// app/encryption-closures/page.js
 import { authFactor } from "@/lib/encryption-closures/utils";
 
 export default function EncryptionDemoPage() {
