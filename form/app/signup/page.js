@@ -58,7 +58,6 @@ export default function Signup() {
       // simulate slow server
       await new Promise((resolve) => setTimeout(resolve, 2000));
 
-      // ✅ update real state after success
       setCount((prev) => prev + 1);
     } catch (err) {
       console.error(err);
