@@ -40,7 +40,7 @@
 
 "use client";
 
-import { useState, useOptimistic } from "react";
+import { useState, useOptimistic, startTransition } from "react";
 
 export default function Signup() {
   const [count, setCount] = useState(0);
@@ -51,8 +51,10 @@ export default function Signup() {
   );
 
   const handleSubmit = async () => {
-    // ✅ Optimistically increase immediately
-    addOptimistic(1);
+    // ✅ Optimistically increase immediately inside a transition
+    startTransition(() => {
+      addOptimistic(1);
+    });
 
     try {
       // simulate slow server
