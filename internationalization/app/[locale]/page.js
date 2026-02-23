@@ -3,7 +3,7 @@ import path from "path";
 import Link from "next/link";
 
 export async function getMessages(locale) {
-  if (!locale) locale = "ur"; // fallback
+  if (!locale) locale = "en"; // fallback
 
   const filePath = path.join(process.cwd(), "messages", `${locale}.json`);
 
@@ -24,7 +24,7 @@ export default async function Home({ params }) {
       <h1>{messages.greeting}</h1>
       <p>{messages.description}</p>
       <br />
-      <Link href={`/${params.locale}/about`}>Go to About Page</Link>
+      <Link href={`/${locale}/about`}>Go to About Page</Link>
       <br />
       <br />
       <Link href="/en">English</Link> | <Link href="/ur">Urdu</Link>

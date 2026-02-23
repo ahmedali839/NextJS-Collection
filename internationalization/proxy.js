@@ -10,7 +10,8 @@ export function proxy(request) {
 
   if (pathnameIsMissingLocale) {
     return NextResponse.redirect(
-      new URL(`/${defaultLocale}${pathname}`, request.url),
+      // new URL(`/${defaultLocale}${pathname}`, request.url),
+      new URL(`/${defaultLocale}`, request.url),
     );
   }
 }
