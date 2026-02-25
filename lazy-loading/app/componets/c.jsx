@@ -10,7 +10,13 @@ export default function C() {
     setMounted(true);
   }, []);
 
-  
+  useEffect(() => {
+    if (mounted) {
+      setTimeout(() => {
+        setMounted1(true);
+      }, 2000);
+    }
+  }, [mounted]);
 
   return (
     <>
