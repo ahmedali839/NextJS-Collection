@@ -54,3 +54,6 @@ export async function POST(req) {
     rawAIResponse: response.choices[0].message,
   });
 }
+
+
+/// it is not working properly, needs hard work
