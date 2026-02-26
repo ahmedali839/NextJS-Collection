@@ -6,7 +6,7 @@ const openai = new OpenAI({
 
 export async function POST(req) {
   const { message } = await req.json();
-
+  
   const tools = [
     {
       type: "function",
@@ -20,7 +20,8 @@ export async function POST(req) {
       },
     },
   ];
-
+  console.log("message: ", openai);
+  
   const response = await openai.chat.completions.create({
     model: "gpt-4o-mini",
     messages: [{ role: "user", content: message }],
@@ -54,6 +55,5 @@ export async function POST(req) {
     rawAIResponse: response.choices[0].message,
   });
 }
-
 
 /// it is not working properly, needs hard work
