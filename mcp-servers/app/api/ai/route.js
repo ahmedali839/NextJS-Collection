@@ -56,8 +56,6 @@
 //   });
 // }
 
-// /// it is not working properly, needs hard work
-
 import { NextResponse } from "next/server";
 
 const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
@@ -112,7 +110,6 @@ export async function POST(req) {
     const data = await res.json();
     const content = data.choices?.[0]?.message?.content || "";
 
-    // Simulate a simple tool call: if user says "getTime", call your backend tool
     if (message.toLowerCase().includes("gettime")) {
       const toolRes = await fetch("http://localhost:3000/api/tools/getTime", {
         method: "POST",
