@@ -1,143 +1,70 @@
-// import OpenAI from "openai";
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
-// const openai = new OpenAI({
-//   apiKey: process.env.OPENAI_API_KEY,
-// });
-
-// export async function POST(req) {
-//   const { message } = await req.json();
-
-//   const tools = [
-//     {
-//       type: "function",
-//       function: {
-//         name: "getTime",
-//         description: "Get current server time",
-//         parameters: {
-//           type: "object",
-//           properties: {},
-//         },
-//       },
-//     },
-//   ];
-//   console.log("message: ", openai);
-
-//   const response = await openai.chat.completions.create({
-//     model: "gpt-4o-mini",
-//     messages: [{ role: "user", content: message }],
-//     tools,
-//     tool_choice: "auto",
-//   });
-//   console.log(response);
-
-//   const toolCall = response.choices[0].message.tool_calls?.[0];
-
-//   if (toolCall) {
-//     // Call our backend tool
-//     const toolResponse = await fetch(
-//       "http://localhost:3000/api/tools/getTime",
-//       {
-//         method: "POST",
-//       },
-//     );
-
-//     const data = await toolResponse.json();
-
-//     return Response.json({
-//       aiUsedTool: true,
-//       toolResult: data,
-//       rawAIResponse: response.choices[0].message,
-//     });
-//   }
-
-//   return Response.json({
-//     aiUsedTool: false,
-//     rawAIResponse: response.choices[0].message,
-//   });
-// }
-
-import { NextResponse } from "next/server";
-
-const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
+// Initialize the Gemini SDK
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 export async function POST(req) {
   try {
     const { message } = await req.json();
 
-    if (!OPENROUTER_API_KEY) {
-      return NextResponse.json(
-        { error: "Missing OPENROUTER_API_KEY" },
-        { status: 500 },
-      );
-    }
-
-    // Basic MCP-like tool: “getTime”
+    // 1. Define tools in Gemini's format
     const tools = [
       {
-        type: "function",
-        function: {
-          name: "getTime",
-          description: "Get current server time",
-          parameters: { type: "object", properties: {} },
-        },
+        functionDeclarations: [
+          {
+            name: "getTime",
+            description:
+              "Get the current server time. Call this when the user asks for the time.",
+            // Parameters are optional in Gemini if the function takes no arguments
+          },
+        ],
       },
     ];
 
-    // Call OpenRouter with Llama 3.2 (free)
-    const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${OPENROUTER_API_KEY}`,
-        "HTTP-Referer": "http://localhost:3000",
-        "X-Title": "MCP Llama Demo",
-      },
-      body: JSON.stringify({
-        model: "meta-llama/llama-3.2-3b-instruct:free",
-        messages: [{ role: "user", content: message }],
-        // tool-like info goes in system prompt for now
-      }),
+    // 2. Select the model (Flash is perfect for fast tool calling)
+    const model = genAI.getGenerativeModel({
+      model: "gemini-2.5-flash",
+      tools: tools,
     });
 
-    if (!res.ok) {
-      const err = await res.json().catch(() => ({}));
-      return NextResponse.json(
-        { error: err.error || "Llama API error" },
-        { status: res.status },
-      );
-    }
+    // 3. Send the user's message
+    const chat = model.startChat();
+    const result = await chat.sendMessage(message);
+    const response = result.response;
 
-    const data = await res.json();
-    const content = data.choices?.[0]?.message?.content || "";
+    // 4. Check if Gemini decided to call a function
+    const functionCalls = response.functionCalls();
 
-    if (message.toLowerCase().includes("gettime")) {
-      const toolRes = await fetch("http://localhost:3000/api/tools/getTime", {
-        method: "POST",
-      });
-      const toolData = await toolRes.json();
+    if (functionCalls && functionCalls.length > 0) {
+      const call = functionCalls[0];
 
-      return NextResponse.json(
-        {
+      if (call.name === "getTime") {
+        // Call your local Next.js backend tool
+        // Note: In production, it's safer to use an absolute URL or call the logic directly
+        const baseUrl =
+          process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+        const toolResponse = await fetch(`${baseUrl}/api/tools/getTime`, {
+          method: "POST",
+        });
+
+        const data = await toolResponse.json();
+
+        return Response.json({
           aiUsedTool: true,
-          toolResult: toolData,
-          rawAIResponse: content,
-        },
-        { status: 200 },
-      );
+          toolName: call.name,
+          toolResult: data,
+          rawAIResponse: "Function call initiated by Gemini",
+        });
+      }
     }
 
-    return NextResponse.json(
-      {
-        aiUsedTool: false,
-        rawAIResponse: content,
-      },
-      { status: 200 },
-    );
+    // 5. If no tool was called, return the standard text response
+    return Response.json({
+      aiUsedTool: false,
+      rawAIResponse: response.text(),
+    });
   } catch (error) {
-    console.error("Llama route error:", error);
-    return NextResponse.json(
-      { error: "Internal server error" },
-      { status: 500 },
-    );
+    console.error("AI Error:", error);
+    return Response.json({ error: error.message }, { status: 500 });
   }
 }
