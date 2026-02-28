@@ -66,7 +66,7 @@
 // }
 
 export default function HomePage() {
-  thisIsABrokenVariableThatDoesNotMakeSense; // Add this line!
+  // thisIsABrokenVariableThatDoesNotMakeSense; // Add this line!
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebPage",
