@@ -6,11 +6,22 @@ import { SemanticResourceAttributes } from '@opentelemetry/semantic-conventions'
 
 const sdk = new NodeSDK({
   resource: new Resource({
-    [SemanticResourceAttributes.SERVICE_NAME]: 'my-quran-academy',
+    // Give your service a name so you can identify it in dashboards
+    [SemanticResourceAttributes.SERVICE_NAME]: 'nextjs-quran-academy',
   }),
-  // This sends the data directly to your Terminal/Console
+  // VISUAL OPTION A: Print everything to your Terminal/Console
   traceExporter: new ConsoleSpanExporter(), 
+  
+  // This automatically tracks HTTP calls, Fetch, and DB queries
   instrumentations: [getNodeAutoInstrumentations()],
 });
 
 sdk.start();
+
+// Shut down gracefully
+process.on('SIGTERM', () => {
+  sdk.shutdown()
+    .then(() => console.log('OTEL SDK shut down'))
+    .catch((err) => console.log('Error shutting down OTEL SDK', err))
+    .finally(() => process.exit(0));
+});
