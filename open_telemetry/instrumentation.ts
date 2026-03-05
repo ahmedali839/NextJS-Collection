@@ -1,6 +1,6 @@
-export async function register() {
-  // This only runs on the Node.js server side
-  if (process.env.NEXT_RUNTIME === 'nodejs') {
-    await import('./otel-setup');
-  }
-}
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  /* You can leave this empty or keep your other settings here */
+};
+
+export default nextConfig;
