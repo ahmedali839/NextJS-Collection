@@ -15,7 +15,7 @@ const sdk = new NodeSDK({
 
 sdk.start();
 
-Handle graceful shutdown
+// Handle graceful shutdown
 process.on('SIGTERM', () => {
   sdk.shutdown()
     .then(() => console.log('OTEL SDK shut down'))
