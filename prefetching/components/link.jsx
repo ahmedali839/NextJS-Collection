@@ -7,8 +7,7 @@ export function CustomLink({ href, children, className, ...props }) {
   return (
     <Link
       href={href}
-      prefetch={active ? null : false} 
-      // We disable automatic prefetching here!
+      prefetch={active ? null : false} // We disable automatic prefetching here!
       className={`font-bold text-blue-600 hover:text-blue-800 transition ${className}`}
       {...props}
     >
