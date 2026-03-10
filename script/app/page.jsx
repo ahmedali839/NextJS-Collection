@@ -14,7 +14,6 @@
 // }
 
 import Script from "next/script";
-import { log } from "node:console";
 
 export default function Page() {
   return (
