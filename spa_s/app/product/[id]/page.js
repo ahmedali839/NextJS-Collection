@@ -7,7 +7,7 @@ export default function ProductPage({ params }) {
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
-    fetch(`/api/products/${id}`, { cache: "no-cache" })
+    fetch(`/api/products/${id}`)
       .then((res) => res.json())
       .then((data) => setProduct(data));
   }, [id]);
