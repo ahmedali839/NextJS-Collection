@@ -5,7 +5,7 @@ export default function Home() {
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
       <GoogleTagManager gtmId="GTM-XYZ" />
       <h2>
-        Hello Yar! Working with third-party-libraries in Next.JS on
+        Hello Yar! Working with third-party-libraries in Next.JS on the
         16-March-2026{" "}
       </h2>
     </div>
