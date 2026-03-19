@@ -1,6 +1,6 @@
 "use client";
 
-import { sendGTMEvent } from "@next/third-parties/google";
+import { sendGTMEvent, YouTubeEmbed } from "@next/third-parties/google";
 
 export default function EventButton() {
   const handleClick = () => {
@@ -27,6 +27,26 @@ export default function EventButton() {
       >
         Send Event (Click)
       </button>
+
+      <div className="flex justify-center items-center">
+        <YouTubeEmbed
+          videoid="ogfYd705cRs"
+          width={600}
+          height={600}
+          params="control=1"
+        />
+
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/8YHBJdPK6eY?si=qvMQF0S_lY4W4nFm"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        ></iframe>
+      </div>
     </div>
   );
 }
