@@ -9,21 +9,7 @@ export default function GallerPage() {
         <p className="text-gray-500">Cached Image Meta-Data & AI Analysis</p>
       </header>
 
-      {/* The Loading state ensures the user isn't starting at a blank and its' manadatory for async functions as well */}
-      <Suspense
-        fallback={
-          <div>
-            {[1, 2, 3].map((i) => (
-              <div
-                key={i}
-                className="h-64 bg-gray-200 animate-pulse rounded-xl"
-              />
-            ))}
-          </div>
-        }
-      >
-        <GalleryContent />
-      </Suspense>
+     
     </main>
   );
 }
