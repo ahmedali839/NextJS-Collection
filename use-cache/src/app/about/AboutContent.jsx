@@ -1,5 +1,5 @@
-import { cacheLife, cacheTag, updateTag } from "next/cache";
-import { getTimeData } from "../lib/actions";
+import { cacheLife, cacheTag } from "next/cache";
+import { getTimeData } from "../lib/data";
 
 export default async function AboutContent() {
   "use cache";

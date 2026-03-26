@@ -1,7 +1,6 @@
 import { cacheLife, cacheTag } from "next/cache";
-import { getProcessedMedia, refreshMediaHubCache } from "../lib/actions";
+import { getProcessedMedia } from "../lib/data";
 import Image from "next/image";
-import RefreshButton from "../lib/RefreshButton";
 
 export default async function GalleryContent() {
   "use cache";
