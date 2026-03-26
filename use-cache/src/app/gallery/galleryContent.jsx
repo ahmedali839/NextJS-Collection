@@ -1,6 +1,7 @@
 import { cacheLife, cacheTag } from "next/cache";
-import { getProcessedMedia } from "../lib/actions";
+import { getProcessedMedia, refreshMediaHubCache } from "../lib/actions";
 import Image from "next/image";
+import RefreshButton from "../lib/RefreshButton";
 
 export default async function GalleryContent() {
   "use cache";
@@ -8,6 +9,7 @@ export default async function GalleryContent() {
   cacheTag("media-hub");
 
   const photos = await getProcessedMedia();
+  console.log(photos);
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
