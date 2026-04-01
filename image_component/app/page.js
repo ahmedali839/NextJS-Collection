@@ -6,6 +6,15 @@ export default function Home() {
       <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
         <h2>Hey, Yar...,</h2>
         <h5>Let's Learn Image Component in NextJS</h5>
+        <Image
+          sizes={300}
+          height={300}
+          width={300}
+          src={
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXnJAbhL9nlViJJTfngOT2DCfU0HGibfJn3A&s"
+          }
+          alt="Main Image"
+        />
       </main>
     </div>
   );
