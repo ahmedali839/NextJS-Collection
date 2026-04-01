@@ -15,6 +15,13 @@ export default function Home() {
           }
           alt="Main Image"
         />
+        <Image
+          sizes={300}
+          height={300}
+          width={300}
+          src={"https://www.pexels.com/video/isparta-highlands-1-18990796/"}
+          alt="Main Image"
+        />
       </main>
     </div>
   );
