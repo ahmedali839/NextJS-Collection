@@ -19,7 +19,7 @@ export default function Home() {
           sizes={300}
           height={300}
           width={300}
-          src={"https://www.pexels.com/video/isparta-highlands-1-18990796/"}
+          src={"https://images.pexels.com/photos/17847701/pexels-photo-17847701.jpeg?_gl=1*1i63ul3*_ga*MTYzNjQ0NjI4OC4xNzY5MjY5NTcw*_ga_8JE65Q40S6*czE3NzUwNjkyMDkkbzckZzEkdDE3NzUwNjk2ODIkajYwJGwwJGgw"}
           alt="Main Image"
         />
       </main>
