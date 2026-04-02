@@ -5,7 +5,9 @@ export default function Home() {
     <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
       <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
         <h2>Hey, Yar...,</h2>
-        <h5>Let's Learn Image Component in NextJS</h5>
+        <h3>Let's Learn Image Component in NextJS</h3>
+        <h5>Navigate to "/fresh-image" for image components</h5>
+
         <Image
           sizes={300}
           height={300}

@@ -15,17 +15,22 @@ export default function FreshImage() {
 
   return (
     <div style={{ padding: "2rem", maxWidth: "600px" }}>
-      <h1>Fresh Image on Refresh</h1>
-      <p>Refresh page to see new random image + blur load.</p>
-      <Image
-        src={freshSrc}
-        alt="Random test landscape image"
-        width={500}
-        height={300}
-        placeholder="empty"
-        blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltRXSOxo2UFRWqW1s5C3OPeIwSA8d0x//2Q=="
-        priority
-      />
+      <figure>
+        <h1>Fresh Image on Refresh</h1>
+
+        <p>Refresh page to see new random image + blur load.</p>
+        {freshSrc && (
+          <Image
+            src={freshSrc}
+            alt="Random image"
+            width={500}
+            height={300}
+            placeholder="blur"
+            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD..."
+          />
+        )}
+        <figcaption>A scenic mountain view</figcaption>
+      </figure>
 
       {loading && <p>Loading image...</p>}
 
