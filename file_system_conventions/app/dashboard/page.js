@@ -7,7 +7,12 @@ const Page = () => {
     forbidden();
   }
 
-  return <div>Dashboard Page</div>;
+  return (
+    <>
+      <h3>Main Dashboard Content</h3>
+      <p>This is the default dashboard page.</p>
+    </>
+  );
 };
 
 export default Page;
