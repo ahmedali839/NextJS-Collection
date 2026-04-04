@@ -30,7 +30,8 @@ export async function Content({ params }) {
       <div>
         <h2>Name: {post.name}</h2>
         <h5>
-          Contact: <span>{post.phone}</span> / <span>{post.email}</span>{" "}
+          Contact: <span className="text-blue-500">{post.phone}</span> /{" "}
+          <span className="text-blue-500">{post.email}</span>{" "}
         </h5>
       </div>
     </div>
@@ -42,7 +43,7 @@ export async function GetPost(slug) {
 
   await new Promise((resolve) => setTimeout(resolve, 3000));
 
-  const res = await fetch(`https://jsonplaceholder.typicode.com/users/${slug}`);
+  const res = await fetch(`https://jsonplacehodlder.typicode.com/users/${slug}`);
   const post = await res.json();
   console.log("Hitted the fetch request");
 
