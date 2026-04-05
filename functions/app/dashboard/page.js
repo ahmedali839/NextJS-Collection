@@ -5,7 +5,7 @@ import { Suspense } from "react";
 export async function FetchData() {
   "use cache";
   cacheTag("json-data");
-  // no 3s waiting, bcz it's cached but for first time
+  // no 3s waiting, bcz it's cached but for first time only
   await new Promise((resolve, reject) => setTimeout(resolve, 3000));
   const res = await fetch("https://jsonplaceholder.typicode.com/users/2");
 
