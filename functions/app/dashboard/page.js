@@ -7,7 +7,9 @@ export async function FetchData() {
   cacheTag("json-data");
   // no 3s waiting, bcz it's cached but for first time only
   await new Promise((resolve, reject) => setTimeout(resolve, 3000));
-  const res = await fetch("https://jsonplaceholder.typicode.com/users/2");
+  const res = await fetch("https://jsonplaceholder.typicode.com/users/2", {
+    cache: "no-cache",
+  });
 
   if (!res.ok) {
     return <p>Failed to load user data.</p>;
