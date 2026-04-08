@@ -11,7 +11,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        {/* Next.js will automatically inject the metadata here */}
+        {/* Next.js will automatically inject the metadata here, don't provide again here */}
         <title>{metadata.openGraph.title}</title>
         <meta name="description" content={metadata.openGraph.description} />
         <meta property="og:title" content={metadata.openGraph.title} />
