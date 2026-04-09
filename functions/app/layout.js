@@ -5,8 +5,8 @@ import "./globals.css"; // If you have global styles
 //   title: {
 //     default: "Title inside Parent",
 //     template: "%s | I'm Parent",
-//   }
-// }
+//   },
+// };
 export default function RootLayout({ children }) {
   return (
     <html lang="en">

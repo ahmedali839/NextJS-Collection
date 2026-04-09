@@ -24,7 +24,9 @@ export default async function Page({ params }) {
       <div>
         <h2>Team Member info: </h2>
         <h2>Name: {data.name}</h2>
+        <h2>Id: {data.id}</h2>
         <h2>Contact: {data.email}</h2>
+        <h2>Address(city): {data.address.city}</h2>
       </div>
     </>
   );
