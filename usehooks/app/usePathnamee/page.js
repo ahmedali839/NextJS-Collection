@@ -17,9 +17,10 @@ export default function Page() {
       pathname: pathname,
       searchValue: searchParams,
     });
-  }, [pathname, searchParams]);
+  }, [pathname, searchParams]); // it will give their real time value 
 
   return (
+    
     <div>
       <h2>
         Real time Values = pathname: {values.pathname}, searchParams:{" "}

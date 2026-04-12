@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 
 export default function Page() {
-  const router = useRouter();
+  const router = useRouter();  // its mostly used in client comps
 
   return (
     <div>
