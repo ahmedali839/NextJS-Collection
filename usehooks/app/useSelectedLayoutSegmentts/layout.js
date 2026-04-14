@@ -1,10 +1,16 @@
-import React from 'react'
+import React from "react";
 
-const layout = ({children}) => {
+export const metadata = {
+  title: "Outer setting title",
+  // description: "It's outer setting description",
+  description: "@a | It's outer setting description",
+};
+
+const layout = ({ children }) => {
   return (
     // this is separate layout for route("setting")
     <div>{children}</div>
-  )
-}
+  );
+};
 
-export default layout
+export default layout;
