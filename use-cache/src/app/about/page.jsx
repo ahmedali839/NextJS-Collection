@@ -5,7 +5,7 @@ import { refreshAboutCache } from "../lib/actions";
 export default function About() {
   return (
     <main className="p-10 font-sans">
-      <h2 className="text-2xl font-bold">About Us</h2>
+      <h2 className="text-2xl font-bold">About Us</h2> // function
 
       <Suspense fallback={<p>Loading...</p>}>
         <AboutContent />
