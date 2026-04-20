@@ -6,7 +6,7 @@ export default function Home() {
 
   const [result,setResult] = useState("");
   const [freezeResult,setFreezeResult] = useState("");
-
+ // state for freeze result
   function freezeBrowser(){
 
     let sum = 0;
