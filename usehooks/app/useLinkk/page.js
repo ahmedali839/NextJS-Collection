@@ -1,7 +1,7 @@
 import Link from "next/link";
 import LoadingIndicator from "./useLinkStatus";
 
-const links = [
+const links = [ // array of links 
   {
     href: "/useLinkk/electronics",
     label: "Electronics",

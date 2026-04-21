@@ -6,7 +6,7 @@ export default function Home() {
 
   const [result,setResult] = useState("");
   const [freezeResult,setFreezeResult] = useState("");
-
+ // state for freezing result of <Script />
   function freezeBrowser(){
 
     let sum = 0;
