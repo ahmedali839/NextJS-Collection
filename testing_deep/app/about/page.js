@@ -5,7 +5,7 @@ const page = () => {
   cvc;
   return (
     <div>
-      <h2>About page</h2>
+      <h2>About page here</h2>
       <Link href="/ab" className="cursor-alias text-blue-500">
         Home
       </Link>
