@@ -6,7 +6,7 @@ const page = () => {
   return (
     <div>
       <h2>About page here</h2>
-      <Link href="/ab" className="cursor-alias text-blue-500"> 
+      <Link href="/ab" className="cursor-alias text-blue-500"> {/*  clicks on link to test in Component testing */}
         Home
       </Link>
     </div>
