@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+:root {
+  --tea-green: #4a7c59;
+  --tea-green-light: #6aab7e;
+  --tea-green-dark: #2d5a3a;
+  --tea-cream: #fdf6e3;
+  --tea-brown: #6b3a2a;
+  --tea-gold: #c9a84c;
+  --tea-charcoal: #2c2c2c;
+}
+
+@theme inline {
+  --color-tea-green: var(--tea-green);
+  --color-tea-green-light: var(--tea-green-light);
+  --color-tea-green-dark: var(--tea-green-dark);
+  --color-tea-cream: var(--tea-cream);
+  --color-tea-brown: var(--tea-brown);
+  --color-tea-gold: var(--tea-gold);
+  --color-tea-charcoal: var(--tea-charcoal);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--tea-cream);
+  color: var(--tea-charcoal);
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+/* smooth underline animation for nav links */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--tea-gold);
+  transition: width 0.3s ease;
+}
+.nav-link:hover::after {
+  width: 100%;
+}
