@@ -3,7 +3,7 @@ import { Poppins, ABeeZee, Cedarville_Cursive } from "next/font/google";
 import Link from "next/link";
 
 const cursive = Cedarville_Cursive({
-  weight: "400",
+  weight: "400", // beautifull fonts
 });
 export default function Home() {
   return (
