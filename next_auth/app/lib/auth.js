@@ -1,10 +1,14 @@
 import GithubProvider from "next-auth/providers/github";
 
 export const authOptions = {
+  pages: {
+    signIn: "/login",
+    error: "/login",
+  },
   providers: [
     GithubProvider({
-      clientId: process.env.GITHUB_ID,
-      clientSecret: process.env.GITHUB_SECRET,
+      clientId: process.env.GITHUB_ID ?? process.env.clientId,
+      clientSecret: process.env.GITHUB_SECRET ?? process.env.clientSecret,
     }),
   ],
   callbacks: {
